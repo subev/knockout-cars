@@ -386,6 +386,13 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.js',
         browsers: ["Chrome"]
       }
+    },
+
+    'gh-pages': {
+        options: {
+            base: "dist"
+        },
+        src: ["**"]
     }
   });
 
