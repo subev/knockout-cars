@@ -18,7 +18,7 @@ module.exports = function (grunt) {
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
-    dist: 'dist'
+    dist: 'dist/blacklist'
   };
 
   // Define the configuration for all the tasks
@@ -390,7 +390,8 @@ module.exports = function (grunt) {
 
     'gh-pages': {
         options: {
-            base: "dist"
+            base: "dist",
+            add: true
         },
         src: ["**"]
     }
@@ -410,6 +411,13 @@ module.exports = function (grunt) {
       'connect:livereload',
       'watch'
     ]);
+  });
+
+  grunt.registerTask('ghp', 'build & gh-pages', function(target) {
+      grunt.task.run([
+          'build',
+          'gh-pages'
+      ]);
   });
 
   grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function (target) {
