@@ -384,16 +384,16 @@ module.exports = function (grunt) {
       },
       ci: {
         configFile: 'test/karma.conf.js',
-        browsers: ["Chrome"]
+        browsers: ['Chrome']
       }
     },
 
     'gh-pages': {
         options: {
-            base: "dist",
+            base: 'dist',
             add: false
         },
-        src: ["**"]
+        src: ['**']
     }
   });
 
@@ -413,7 +413,7 @@ module.exports = function (grunt) {
     ]);
   });
 
-  grunt.registerTask('ghp', 'build & gh-pages', function(target) {
+  grunt.registerTask('ghp', 'build & gh-pages', function() {
       grunt.task.run([
           'build',
           'gh-pages'
