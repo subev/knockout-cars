@@ -10,7 +10,8 @@
  */
 angular
   .module('blacklistApp', [
-    'ngRoute'
+    'ngRoute',
+    'kendo.directives'
     ])
   .config(function($routeProvider) {
     $routeProvider
@@ -23,8 +24,8 @@ angular
         controller: 'ComplaintsCtrl'
       })
       .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+        templateUrl: 'views/kendo-grid.html',
+        controller: 'kendo-grid'
       })
       .otherwise({
         redirectTo: '/'
