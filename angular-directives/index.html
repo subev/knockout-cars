@@ -5,7 +5,10 @@
   <title>Custom Directives</title>
 </head>
 <body>
-  <div ng-app='playgroundModule'>
+  <style>
+    .ng-cloak { display:none; }
+  </style>
+  <div ng-app='playgroundModule' class='ng-cloak'>
     <div ng-controller="SomeController">
       <!-- piping the parent visible variable into the directive context -->
       <p lp-form visible="visible" info="customer"></p>
