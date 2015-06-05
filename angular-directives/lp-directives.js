@@ -2,16 +2,16 @@ lpModule
   .directive('lpForm', function () {
     return {
       scope: {
-        visible: "=",
-        customerInfo: "=info",
-        //something like an initializer
+        'visible': "=",
+        'customerInfo': "=info"
       },
-      templateUrl: 'template.html'
+      templateUrl: 'form-template.html'
     }
   })
   //this directive doesn't have template since it does not need it
-  .directive('lpTimer', function ($interval, dateFilter) {
+  .directive('lpTimer', ['$interval', 'dateFilter', function ($interval, dateFilter) {
 
+        //something like an initializer function
     return {
         link: function($scope, element, attrs) {
           var format = $scope.format || element.attr('format');
@@ -37,4 +37,4 @@ lpModule
           }, 1000);
         }
     }
-  })
+  }])
