@@ -21,63 +21,7 @@
       <div lp-timer format="M/d/yy h:mm:ss a"></div>
     </div>
   </div>
-   <script>
-      angular.module('playgroundModule', [])
-        .controller('SomeController', ['$scope', function ($scope) {
-          $scope.visible = true;
-          $scope.appId = 123;
-          $scope.customer = {
-            name: 'Petur',
-            address: 'Bulgaria'
-          };
-
-          $scope.customer2 = {
-            name: 'John',
-            address: 'USA',
-            //this does not seem to work because prefix is missing in template
-            visible: true
-          };
-          $scope.customers = [$scope.customer, $scope.customer2];
-        }])
-      .directive('lpForm', function () {
-        return {
-          scope: {
-            visible: "=",
-            customerInfo: "=info",
-            //something like an initializer
-          },
-          templateUrl: 'template.html'
-        }
-      })
-      //this directive doesn't have template since it does not need it
-      .directive('lpTimer', function ($interval, dateFilter) {
-
-        return {
-            link: function($scope, element, attrs) {
-              var format = $scope.format || element.attr('format');
-              var timeoutId;
-
-              element.css('border', '1px solid blue');
-
-              function updateTime (argument) {
-                //element.text(dateFilter(new Date(), format));
-                element.text(dateFilter(new Date(), format));
-              }
-
-              $scope.$watch(attrs.myCurrentTime, function(value) {
-                updateTime();
-              });
-
-              element.on('$destroy', function() {
-                $interval.cancel(timeoutId);
-              });
-
-              timeoutId = $interval(function() {
-                updateTime();
-              }, 1000);
-            }
-        }
-      })
-   </script>
+  <script src="main.js"></script>
+  <script src="lp-directives.js"></script>
 </body>
 </html>
