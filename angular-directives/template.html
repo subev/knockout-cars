@@ -1,0 +1,10 @@
+<div style="border: 1px solid red;">
+  <p ng-if='visible'>
+    'Name: {{customerInfo.name}} Address: {{ customerInfo.address}}'
+  </p>
+  <input type="checkbox"  ng-model="visible"/>
+  address:
+  <input ng-model="customerInfo.address"/>
+  <!-- appId from parent - this wont work without piping 
+  <input ng-model="$scope.appId"/> --!>
+</div>

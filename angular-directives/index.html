@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+</head>
+<body>
+  <div ng-app='playgroundModule'>
+    <div ng-controller="SomeController">
+      <!-- piping the parent visible variable into the directive context -->
+      <p lp-form visible="visible" info="customer"></p>
+      <p lp-form info="customer2"></p>
+      <hr/>
+      <input type="checkbox"  ng-model="visible"/>
+      <input ng-model="appId">
+      {{appId}}
+      <ul ng-repeat="cust in customers">
+        <li> Name: {{ cust.name }} ---- Address: {{ cust.address}}  --- {{ cust.visible }} </li>
+      </ul>
+    </div>
+  </div>
+   <script>
+      angular.module('playgroundModule', [])
+        .controller('SomeController', ['$scope', function ($scope) {
+          $scope.visible = true;
+          $scope.appId = 123;
+          $scope.customer = {
+            name: 'Petur',
+            address: 'Bulgaria'
+          };
+
+          $scope.customer2 = {
+            name: 'John',
+            address: 'USA',
+            //this does not seem to work because prefix is missing in template
+            visible: true
+          };
+          $scope.customers = [$scope.customer, $scope.customer2];
+        }])
+      .directive('lpForm', function () {
+        return {
+          scope: {
+            visible: "=",
+            customerInfo: "=info"
+          },
+          templateUrl: 'template.html'
+        }
+      })
+   </script>
+</body>
+</html>
