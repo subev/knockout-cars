@@ -9,7 +9,7 @@
     .ng-cloak { display:none; }
   </style>
   <div ng-app='playgroundModule' class='ng-cloak'>
-    <div ng-controller="SomeController">
+    <div ng-controller="FirstController">
       <!-- piping the parent visible variable into the directive context -->
       <p lp-form visible="visible" info="customer"></p>
       <p lp-form info="customer2"></p>
@@ -22,10 +22,14 @@
         <li> Name: {{ cust.name }} ---- Address: {{ cust.address}}  --- {{ cust.visible }} </li>
       </ul>
     </div>
+    <div ng-controller="SecondController">
+        {{ appId }} | {{ message }} | {{ state }}
+        <lp-dialog state='state' on-close="contrClose(message)"></lp-dialog>
+    </div>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
-  <script src="lp-all-compiled.js"></script>
-  <!-- <script src="main.js"></script>
-  <script src="lp-directives.js"></script> -->
+  <!-- ><script src="lp-all-compiled.js"></script> -->
+  <script src="main.js"></script>
+  <script src="lp-directives.js"></script>
 </body>
 </html>

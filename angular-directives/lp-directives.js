@@ -11,8 +11,8 @@ lpModule
   //this directive doesn't have template since it does not need it
   .directive('lpTimer', ['$interval', 'dateFilter', function ($interval, dateFilter) {
 
-        //something like an initializer function
     return {
+        //something like an initializer function
         link: function($scope, element, attrs) {
           var format = $scope.format || element.attr('format');
           var timeoutId;
@@ -38,3 +38,20 @@ lpModule
         }
     }
   }])
+  .directive('lpDialog', function() {
+    return {
+      //could be added just on elements
+      restrict: 'E',
+      templateUrl: 'dialog-template.html',
+      transclude: true,
+      scope: {
+        'close': '&onClose',
+        'state': '=state'
+      },
+      link: function($scope) {
+        //this will hide the parent scope variable
+        //$scope.appId = 13;
+        $scope.foo = "this is coming from link"
+      }
+    }
+  })

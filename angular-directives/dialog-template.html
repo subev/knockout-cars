@@ -1,0 +1,14 @@
+<div style="border: 1px solid pink;" class='alert'>
+  <a href="#" ng-click='close({ message: "the message" })'>&times;</a>
+    (state and appId coming from parent scope) 
+  <br>
+    state -> {{ state }} |
+    appId -> {{ appId }}
+  <br>
+  <div ng-if='state'>
+    {{ foo }}
+  </div>
+  <div ng-transclude>
+    lol {{ state }}
+  </div>
+</div>

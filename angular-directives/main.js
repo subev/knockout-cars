@@ -1,8 +1,8 @@
 var lpModule = angular.module('playgroundModule', [])
-  .controller('SomeController', ['$scope', function ($scope) {
+  .controller('FirstController', ['$scope', function ($scope) {
     $scope.visible = true;
     $scope.appId = 123;
-    $scope.customer = {
+    $scope['customer'] = {
       name: 'Petur',
       address: 'Bulgaria'
     };
@@ -14,4 +14,18 @@ var lpModule = angular.module('playgroundModule', [])
       visible: true
     };
     $scope.customers = [$scope.customer, $scope.customer2];
+  }])
+  .controller('SecondController', ['$scope', '$timeout', function (scope, to) {
+    scope.appId = 234;
+    scope.state = true;
+    scope.contrClose = function(message) {
+      scope.state  = false;
+      scope.message = message;
+
+      to(function() {
+        scope.message = undefined;
+        scope.state  = true;
+      }, 1000);
+    };
+
   }])
