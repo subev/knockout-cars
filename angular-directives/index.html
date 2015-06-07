@@ -7,6 +7,7 @@
 <body>
   <style>
     .ng-cloak { display:none; }
+    .pointer { cursor: pointer; }
   </style>
   <div ng-app='playgroundModule' class='ng-cloak'>
     <div ng-controller="FirstController">
@@ -24,7 +25,11 @@
     </div>
     <div ng-controller="SecondController">
         {{ appId }} | {{ message }} | {{ state }}
-        <lp-dialog state='state' on-close="contrClose(message)"></lp-dialog>
+        <lp-dialog state='state' on-close="contrClose(message)">
+          this is transcuded -> {{ state }}
+        </lp-dialog>
+        <lp-draggable>drag me baby
+        </lp-draggable>
     </div>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>

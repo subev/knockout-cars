@@ -55,3 +55,43 @@ lpModule
       }
     }
   })
+  .directive('lpDraggable', ['$document', function(doc) {
+    return {
+      link: function(scope, element, attr) {
+        var startX = 0,
+            startY = 0,
+            x = 0,
+            y = 0;
+
+        element.css({
+          position: 'relative',
+          border: '1px solid red',
+          backgorundColor: 'lightgrey',
+        });
+
+        element.addClass('pointer');
+
+        element.on('mousedown', function(e) {
+          e.preventDefault();
+          startX = e.pageX - x;
+          startY = e.pageY - y;
+          doc.on('mousemove', mouseMove);
+          doc.on('mouseup', mouseUp);
+        });
+
+        function mouseMove (e) {
+          x = e.pageX - startX;
+          y = e.pageY - startY;
+          element.css({
+            top: y + 'px',
+            left: x + 'px'
+          });
+        }
+
+        function mouseUp (argument) {
+          doc.off('mousemove', mouseMove);
+          doc.off('mouseup', mouseUp);
+        }
+      }
+    }
+  }])
