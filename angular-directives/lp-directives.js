@@ -101,7 +101,7 @@ lpModule
       restrict: 'E',
       transclude: true,
       scope: {},
-      controller: function($scope) {
+      controller: ['$scope', function($scope) {
         var panes = $scope.panes = [];
 
         $scope.select = function(pane) {
@@ -117,7 +117,7 @@ lpModule
           }
           panes.push(pane);
         }
-      },
+      }],
       templateUrl: "tabstrip-template.html",
     }
   })
