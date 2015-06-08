@@ -10,6 +10,7 @@
     .pointer { cursor: pointer; }
   </style>
   <div ng-app='playgroundModule' class='ng-cloak'>
+    <h3>second controller</h3>
     <div ng-controller="FirstController">
       <!-- piping the parent visible variable into the directive context -->
       <p lp-form visible="visible" info="customer"></p>
@@ -23,6 +24,7 @@
         <li> Name: {{ cust.name }} ---- Address: {{ cust.address}}  --- {{ cust.visible }} </li>
       </ul>
     </div>
+    <h3>second controller</h3>
     <div ng-controller="SecondController">
         {{ appId }} | {{ message }} | {{ state }}
         <lp-dialog state='state' on-close="contrClose(message)">
@@ -30,6 +32,20 @@
         </lp-dialog>
         <lp-draggable>drag me baby
         </lp-draggable>
+    </div>
+    <h3>third controller</h3>
+    <div ng-controller="ThirdController">
+      <lp-tabstrip>
+        <lp-tab title='foo title'>
+          <h4>Foo</h4>
+          <p>some text inside first tab</p>
+        </lp-tab>
+        <lp-tab title='bar title'>
+          <h4>Bar</h4>
+          <p>second tab text</p>
+          <p><a href ng-click="i = i + 1">counter: {{i || 0}}</a></p>
+        </lp-tab>
+      </lp-tabstrip>
     </div>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>

@@ -29,3 +29,6 @@ var lpModule = angular.module('playgroundModule', [])
     };
 
   }])
+  .controller('ThirdController', ['$scope', function($scope) {
+    $scope.i = 3;
+  }])
